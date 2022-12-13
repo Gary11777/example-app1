@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Mail\Goodbye;
+use Illuminate\Http\RedirectResponse;
+//use App\Mail\Goodbye;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,7 @@ use App\Mail\Goodbye;
 |
 */
 
+/*
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -34,7 +38,15 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+*/
+#Route::get('/testmail', function() {
+#    Mail::to('iharushakou@gmail.com')->send(new GoodBye);
+#  });
 
-Route::get('/testmail', function() {
-    Mail::to('iharushakou@gmail.com')->send(new GoodBye);
-  });
+Route::get('/', function () {
+    return redirect('/app');
+});
+
+Route::get('/app', [\App\Http\Controllers\PostController::class, 'Output']);
+
+Route::post('/post', [\App\Http\Controllers\PostController::class, 'Submit']);

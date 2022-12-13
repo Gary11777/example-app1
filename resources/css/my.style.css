@@ -1,0 +1,16 @@
+.create-post {
+    border: solid 1px silver;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.field {
+    clear:both;
+    text-align:left;
+    line-height:25px;
+    max-width: 500px;
+}
+.main {
+    float:left
+}
